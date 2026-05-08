@@ -26,7 +26,15 @@ const ProductCard = ({ product, home }) => {
 
                 {/* Img */}
                 <div className='h-4/6 flex items-center justify-center '>
-                    <img className='w-5/6 mx-auto ' src={img} alt={title} />
+                    <img
+                        className='w-5/6 mx-auto '
+                        src={img}
+                        alt={title}
+                        onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = '/shoe.png';
+                        }}
+                    />
                 </div>
                 {/* Title */}
                 <div className='h-1/6 flex flex-col justify-end items-start xs:mt-2 md:mt-6'>

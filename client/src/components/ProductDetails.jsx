@@ -85,7 +85,15 @@ const ProductDetails = () => {
                                     }
                                 </button>
                                 {/* Product image */}
-                                <img src={product.img} alt={product.title} className='md:w-2/3 m-auto xs:my-8 ' />
+                                <img
+                                    src={product.img}
+                                    alt={product.title}
+                                    className='md:w-2/3 m-auto xs:my-8 '
+                                    onError={(e) => {
+                                        e.currentTarget.onerror = null;
+                                        e.currentTarget.src = '/shoe.png';
+                                    }}
+                                />
                             </div>
                             <div className='md:w-1/2 xs:w-full flex flex-col md:justify-between md:pl-4 md:ml-4 h-full'>
                                 <div >
@@ -106,8 +114,8 @@ const ProductDetails = () => {
                                 <div className='flex flex-col mb-4 '>
                                     <div className='flex gap-2 items-baseline'>
                                         {/* Product rating */}
-                                        <p className='flex items-center'>
-                                            {product.rating}
+                                        <div className='flex items-center'>
+                                            <span>{product.rating}</span>
                                             <ReactStars
                                                 count={5}                // Total number of stars
                                                 value={product.rating}   // Rating value (fractional)
@@ -117,7 +125,7 @@ const ProductDetails = () => {
                                                 edit={false}             // Set to false to make it read-only
                                                 half={true}              // Allows for fractional stars
                                             />
-                                        </p>
+                                        </div>
                                         <p className='xs:text-xs sm:text-base'> {product.reviews} reviews</p>
                                     </div>
                                     <p className='text-gray-500 text-sm'>{product.orders ? product.orders + ` bought in past month` : ''} </p>

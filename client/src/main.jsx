@@ -44,9 +44,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <WishListProvider>
       <CartProvider>
-        <RouterProvider router={router}>
-          <App />
-        </RouterProvider>
+        <RouterProvider router={router} />
         <ToastContainer />
       </CartProvider>
     </WishListProvider>
